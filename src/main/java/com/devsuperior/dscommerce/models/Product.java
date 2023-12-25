@@ -1,4 +1,4 @@
-package com.devsuperior.dscommerce.entities;
+package com.devsuperior.dscommerce.models;
 
 import jakarta.persistence.*;
 
@@ -23,10 +23,9 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<Category> categories = new HashSet<>();
-
+    private final Set<Category> categories = new HashSet<>();
     @OneToMany(mappedBy = "id.product")
-    private Set<OrderItem> items = new HashSet<>();
+    private final Set<OrderItem> items = new HashSet<>();
 
     public Product() {
     }

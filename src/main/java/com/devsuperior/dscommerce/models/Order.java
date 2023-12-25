@@ -1,4 +1,4 @@
-package com.devsuperior.dscommerce.entities;
+package com.devsuperior.dscommerce.models;
 
 import jakarta.persistence.*;
 
@@ -17,16 +17,13 @@ public class Order {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant moment;
     private OrderStatus status;
-
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
-
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
-
     @OneToMany(mappedBy = "id.order")
-    private Set<OrderItem> items = new HashSet<>();
+    private final Set<OrderItem> items = new HashSet<>();
 
     public Order() {
     }
