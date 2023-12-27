@@ -50,4 +50,9 @@ public class ProductService {
        entity.setPrice(dto.getPrice());
     }
 
+    @Transactional()
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
 }
