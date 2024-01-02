@@ -8,7 +8,6 @@ import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -56,9 +55,9 @@ public class ProductService {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
-        try{
+        try {
             repository.deleteById(id); //TODO
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new ResourceNotFoundException("Resource not found");
         } catch (DataIntegrityViolationException e) {
             throw new DataBaseException("Referential integrity constraint violation");
