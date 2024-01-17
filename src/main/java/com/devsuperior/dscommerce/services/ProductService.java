@@ -10,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -56,9 +59,11 @@ public class ProductService {
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
         try {
-            repository.deleteById(id); //TODO
-        } catch (IllegalArgumentException e) {
-            throw new ResourceNotFoundException("Resource not found");
+            if (repository.existsById(id)){
+                repository.deleteById(id);
+            } else {
+                throw new ResourceNotFoundException("Resource not found");
+            }
         } catch (DataIntegrityViolationException e) {
             throw new DataBaseException("Referential integrity constraint violation");
         }

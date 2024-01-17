@@ -1,6 +1,12 @@
 package com.devsuperior.dscommerce.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.time.Instant;
+
+@Getter
+@AllArgsConstructor
 
 public class CustomError {
 
@@ -9,26 +15,4 @@ public class CustomError {
     private String error;
     private String path;
 
-	public CustomError(Instant timestamp, Integer status, String error, String path) {
-		this.timestamp = timestamp;
-		this.status = status;
-		this.error = error;
-		this.path = path;
-	}
-
-	public Instant getTimestamp() {
-		return timestamp;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public String getError() {
-		return error;
-	}
-
-	public String getPath() {
-		return path;
-	}
 }
