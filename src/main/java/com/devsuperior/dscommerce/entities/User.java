@@ -1,4 +1,4 @@
-package com.devsuperior.dscommerce.models;
+package com.devsuperior.dscommerce.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

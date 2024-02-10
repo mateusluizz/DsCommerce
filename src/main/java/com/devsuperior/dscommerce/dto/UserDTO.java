@@ -1,6 +1,6 @@
 package com.devsuperior.dscommerce.dto;
 
-import com.devsuperior.dscommerce.models.User;
+import com.devsuperior.dscommerce.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

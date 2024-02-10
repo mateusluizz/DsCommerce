@@ -1,7 +1,7 @@
 package com.devsuperior.dscommerce.services;
 
 import com.devsuperior.dscommerce.dto.UserDTO;
-import com.devsuperior.dscommerce.models.User;
+import com.devsuperior.dscommerce.entities.User;
 import com.devsuperior.dscommerce.repositories.UserRepository;
 import com.devsuperior.dscommerce.services.exceptions.DataBaseException;
 import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;
