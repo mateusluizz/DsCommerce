@@ -5,7 +5,9 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,5 +33,12 @@ public class User {
     @OneToMany(mappedBy = "client")
     private final List<Order> orders = new ArrayList<>();
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "tb_user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private final Set<Role> roles = new HashSet<>();
 }
 
