@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -76,7 +77,6 @@ public class UserService implements UserDetailsService {
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
         entity.setBirthDate(dto.getBirthDate());
-        entity.setPassword(dto.getPassword());
     }
 
     @Override
@@ -87,5 +87,20 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("Email not found");
         }
         return user;
+    }
+
+    protected User authenticated() {
+        try {
+            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            return repository.findByEmail(username);
+        } catch (Exception e) {
+            throw new UsernameNotFoundException("Invalid User");
+        }
+
+    }
+    @Transactional(readOnly = true)
+    public UserDTO getMe() {
+        User entity = authenticated();
+        return new UserDTO(entity);
     }
 }
