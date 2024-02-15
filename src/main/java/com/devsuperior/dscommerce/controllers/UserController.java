@@ -29,40 +29,4 @@ public class UserController {
         return ResponseEntity.ok(dto);
     }
 
-//    @GetMapping(value = "/{id}")
-//    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
-//        UserDTO dto = service.findById(id);
-//        return ResponseEntity.ok(dto);
-//    }
-//
-//    @GetMapping
-//    public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) {
-//        Page<UserDTO> dto = service.findAll(pageable);
-//        return ResponseEntity.ok(dto);
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserDTO dto) {
-//        dto = service.insert(dto);
-//        URI uri = ServletUriComponentsBuilder
-//                .fromCurrentRequest()
-//                .path("/{id}")
-//                .buildAndExpand(dto.getId())
-//                .toUri();
-//        return ResponseEntity.created(uri).body(dto);
-//    }
-//
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<UserDTO> update(@Valid @PathVariable Long id, @RequestBody UserDTO dto) {
-//        dto = service.update(id, dto);
-//        return ResponseEntity.ok(dto);
-//    }
-//
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<Void> delete(@PathVariable Long id) {
-//        service.delete(id);
-//        return ResponseEntity.noContent().build();
-//    }
-
-
 }

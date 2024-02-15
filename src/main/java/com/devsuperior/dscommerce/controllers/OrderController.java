@@ -30,38 +30,16 @@ public class OrderController {
         return ResponseEntity.ok(dto);
     }
 
-//    @GetMapping
-//    public ResponseEntity<Page<ProductMinDTO>> findAll(
-//            @RequestParam(name = "name", defaultValue = "") String name,
-//            Pageable pageable) {
-//        Page<ProductMinDTO> dto = service.findAll(name, pageable);
-//        return ResponseEntity.ok(dto);
-//    }
-//
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    @PostMapping
-//    public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO dto) {
-//        dto = service.insert(dto);
-//        URI uri = ServletUriComponentsBuilder
-//                .fromCurrentRequest()
-//                .path("/{id}")
-//                .buildAndExpand(dto.getId())
-//                .toUri();
-//        return ResponseEntity.created(uri).body(dto);
-//    }
-//
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<ProductDTO> update(@PathVariable Long id, @Valid @RequestBody ProductDTO dto) {
-//        dto = service.update(id, dto);
-//        return ResponseEntity.ok(dto);
-//    }
-//
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<Void> delete(@PathVariable Long id) {
-//        service.delete(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    @PreAuthorize("hasRole('ROLE_CLIENT')")
+    @PostMapping
+    public ResponseEntity<OrderDTO> insert(@Valid @RequestBody OrderDTO dto) {
+        dto = service.insert(dto);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(dto.getId())
+                .toUri();
+        return ResponseEntity.created(uri).body(dto);
+    }
 
 }
