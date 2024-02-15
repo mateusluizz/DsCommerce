@@ -3,10 +3,7 @@ package com.devsuperior.dscommerce.dto;
 import com.devsuperior.dscommerce.entities.Category;
 import com.devsuperior.dscommerce.entities.Product;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +22,7 @@ public class ProductDTO {
     private String name;
     @Size(min = 10, message = "Description must have minimum 10 characters")
     private String description;
+    @NotNull(message = "Required field")
     @Positive(message = "Price must be positive")
     private Double price;
     private String imgUrl;
