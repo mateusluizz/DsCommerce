@@ -1,6 +1,7 @@
 package com.devsuperior.dscommerce.entities;
 
 import javax.persistence.*;
+
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,6 +40,15 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private final Set<Role> roles = new HashSet<>();
+
+    public boolean hasRole(String roleName) {
+        for (Role role : roles) {
+            if (role.getAuthority().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
