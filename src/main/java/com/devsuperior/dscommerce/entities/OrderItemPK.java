@@ -3,6 +3,8 @@ package com.devsuperior.dscommerce.entities;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 
 @Embeddable
 public class OrderItemPK implements Serializable {
